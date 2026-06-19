@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css_assets/mystyles.css">
+
+    <title>Kings Delights - About Us</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        nav ul{
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a{
+            text-decoration: none;
+            text-align: center;
+            color: black;
+        }
+
+        nav a:hover{
+            color:rgb(0, 183, 255);
+            background:rgb(22, 68, 109) ;
+        }
+
+        /* ACTIVE LINK */
+        nav a.active{
+            background: rgb(0, 183, 255);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        h2{
+            color: rgb(0, 183, 255);
+            text-align: center;
+        }
+
+        .container{
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section{
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease;
+        }
+
+        iframe{
+            display: block;
+            margin: auto;
+            max-width: 100%;
+        }
+
+        footer{
+            background-color: rgb(8, 62, 109);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="images/kings delights (2).png" alt="Logo" width="200">
+
+     <nav>
+        <ul class="navigation">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about_us.html" class="active">About</a></li>
+            <li><a href="product.html">Services</a></li>
+            <li><a href="enquires.html">Enquiries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h2>Welcome to Kings Delights</h2>
+
+    <div class="container">
+
+        <div class="section">
+            <h3>Our Story</h3>
+            <p>
+                Kings Delights specialises in freshly baked goods such as biscuits, pastries, cakes, cupcakes, and delicious fruity desserts. 
+                The business proudly serves local customers and offers custom orders for all occasions.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>History</h3>
+            <p>
+                Kings Delights began as a home-based business after the owner, Kamogelo, decided to follow her passion for baking. 
+                Starting with family, friends, and local customers, the business quickly grew through word-of-mouth and social media.
+            </p>
+            <p>
+                As demand increased, the business expanded into a retail space, allowing it to reach a wider audience. 
+                Today, Kings Delights continues to grow, with plans to expand further both in-store and online.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Mission</h3>
+            <p>
+                To provide high-quality, freshly baked goods that bring joy and satisfaction to every customer, while continuously growing into a trusted and innovative bakery brand.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Vision</h3>
+            <p>
+                To become a well-known and respected bakery brand recognised for creativity, quality, and excellent customer service.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Team Members</h3>
+            <ul id="teamList">
+                <li>Kamogelo Nonyane</li>
+                <li>Nthabiseng Malinga</li>
+                <li>Siba Tuntulwana</li>
+                <li>Thabang Majola</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3 style="text-align:center;">Behind the Scenes</h3>
+            <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/EaljSnLrJW8" 
+                title="YouTube video player" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>Kings Delights &copy; 2026</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+// ACTIVE NAVIGATION
+const navLinks = document.querySelectorAll(".navigation a");
+
+navLinks.forEach(link => {
+    link.addEventListener("click", function() {
+        navLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+    });
+});
+
+// SCROLL ANIMATION
+const sections = document.querySelectorAll(".section");
+
+function revealSections(){
+    const trigger = window.innerHeight * 0.85;
+
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+
+        if(top < trigger){
+            sec.style.opacity = "1";
+            sec.style.transform = "translateY(0)";
+        }
+    });
+}
+
+window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
+
+// TEAM INTERACTION (click highlight)
+const teamMembers = document.querySelectorAll("#teamList li");
+
+teamMembers.forEach(member => {
+    member.addEventListener("click", () => {
+        member.style.color = "skyblue";
+        member.style.fontWeight = "bold";
+    });
+});
+
+// SMOOTH SCROLL (future use)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href"))?.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
+</script>
+
+</body>
+</html>
