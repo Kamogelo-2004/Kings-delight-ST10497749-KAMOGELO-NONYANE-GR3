@@ -1,0 +1,8 @@
+User-agent:*
+Allow: /
+
+# Don not crawl the equire page
+Disallow: /equire.html
+
+# Sitemap
+Sitemap:https://Kingsdelights.com/sitemap.xml
